@@ -30,6 +30,7 @@ public class CollegeController {
 	public College updateCollege(@PathVariable String id, @RequestBody College college) {
 		return service.updateCollege(id, college);
 	}
+	
 }
 
 
