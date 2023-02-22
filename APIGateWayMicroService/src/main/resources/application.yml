@@ -1,0 +1,24 @@
+
+server:
+  port: 7000
+  
+  
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: COLLEGE-CREATE
+        uri: http://localhost:9091
+        predicates:
+        - Path=/feign1/create/**
+        
+      - id: COLLEGE-DELETE
+        uri: http://localhost:9092
+        predicates:
+        - Path=/feign2/delete/**
+        
+        
+        
+        
+        
+        

@@ -1,0 +1,27 @@
+
+
+server:
+  port: 3000
+  
+  
+spring:
+  application:
+    name: API-GATEWAY
+    
+  cloud:
+    gateway:
+      routes:
+      - id: COLLEGE-CREATE
+        uri: http://localhost:9091/feign/create
+        predicates:
+        - Path=/create/**
+        
+      - id: COLLEGE-DELETE
+        uri: http://localhost:9092/feign/create
+        predicates:
+        - Path=/delete/**
+
+        
+        
+        
+        

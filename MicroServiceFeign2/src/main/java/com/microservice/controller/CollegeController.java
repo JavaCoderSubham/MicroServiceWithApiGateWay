@@ -1,5 +1,7 @@
 package com.microservice.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,21 +11,34 @@ import org.springframework.web.bind.annotation.RestController;
 import com.microservice.service.CollegeService;
 
 @RestController
-@RequestMapping("/feign")
+@RequestMapping("/feign2/delete")
 public class CollegeController {
 
 	@Autowired
 	private CollegeService service;
 	
+	private final Logger log = LoggerFactory.getLogger(CollegeController.class);
 	
-	@DeleteMapping("/delete/{id}")
+	
+	@DeleteMapping("/id/{id}")
 	public String deleteSingle(@PathVariable String id) {
-		return service.deleteSingle(id);
+		log.info("========= Start Delete Single Method =========");
+		log.info("deleteSingle(String) -> | Id : {}",id);
+		String deleteSingle = service.deleteSingle(id);
+		log.info("deleteSingle(String) -> | Message : {}",deleteSingle);
+		log.info("========= End Delete Single Method =========");
+		return deleteSingle;
 	}
 	
-	@DeleteMapping("/delete")
+	@DeleteMapping("/all")
 	public String deleteAll() {
-		return service.deleteAll();
+		log.info("========= Start Delete All Method =========");
+		log.info("deleteAll() -> | ");
+		String deleteAll = service.deleteAll();
+		log.info("deleteAll() -> | Message : {}",deleteAll);
+		log.info("========= End Delete All Method =========");
+		return deleteAll;
+		
 	}
 	
 	
